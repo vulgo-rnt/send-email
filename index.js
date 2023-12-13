@@ -10,9 +10,9 @@ app.get("/", (req, res) => {
   res.send("Is the Back-End");
 });
 
-app.post("/", (req, res) => {
-  sendEmail(req.body);
-  res.send("Email Send Sucessfully");
+app.post("/", async (req, res) => {
+  const resp = await sendEmail(req.body);
+  res.send(resp);
 });
 
 app.listen(3000, () => {
