@@ -11,8 +11,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  const resp = await sendEmail(req.body);
-  res.send(resp);
+  try {
+    res.send(await sendEmail(req.body));
+  } catch (error) {
+    res.statusCode = 400;
+    res.send(error);
+  }
 });
 
 app.listen(3000, () => {
