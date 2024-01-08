@@ -1,10 +1,12 @@
 import express from "express";
 import { sendEmail } from "./sendEmail.js";
 import "dotenv/config";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Is the Back-End");
